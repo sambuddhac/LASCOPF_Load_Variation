@@ -1,0 +1,202 @@
+\subsection{Message passing algorithm}
+
+In this section, we describe the message passing algorithm used to solve
+the SC-OPF. We begin by assuming that all device objective functions are
+convex, closed, and proper (CCP) functions. We then derive a
+distributed, message passing algorithm using operator splitting and the
+alternating directions method of multipliers (ADMM) \cite{BP:11}. This
+algorithm has guaranteed convergence for CCP functions, is fully
+decentralized, is self-healing and robust, and is effectively
+plug-and-play for security-constrained OPF problems.
+
+\subsection{Consensus form SC-OPF}
+Before applying ADMM to solve the SC-OPF, we first replicate the power
+plans $P \in \reals^{|\terminals| \times (|\mathcal{L}|+1)}$ by introducing a copy,
+$z \in \reals^{|\terminals| \times (|\mathcal{L}|+1)}$, of the plans. We then solve
+the \emph{consensus form SC-OPF}:
+\begin{equation}
+\begin{array}{ll}
+\mbox{minimize} & f(P) \\
+\mbox{subject to} & \bar z = 0 \\
+& P = z,
+\end{array}
+\end{equation} \label{p-consensus-scopf}
+
+where $\bar z$ is the arithmetic mean of $z$ associated with a particular net. Because of the consensus constraint, when we solve the consensus form
+SC-OPF, the optimal solution will agree with the solution of the
+original SC-OPF. We introduce the indicator function $g(z) =
+\mathcal{I}_{ \{ z \mid \bar z = 0 \}}(z)$, which is $0$ whenever $\bar
+z = 0$ and $+\infty$ otherwise (if the power balance constraint is
+violated). Because $\bar z$ is the average power at each net, the set
+$\{ z \mid \bar z = 0 \}$ can be written as $\bigcap_{N_i \in \nets} \{ z
+\mid \bar z_{N_i} = 0 \}$, where $\bar z_{N_i}$ is the average power at net $N_i$;
+then,
+\[
+g(z) = \sum_{{N_i} \in \nets} g_{N_i}(z) = \sum_{{N_i} \in \nets} \mathcal{I}_{\{ z \mid \bar z_{N_i} = 0 \}}(z).
+\]
+Since the summands in the last expression only involve each net ${N_i}$
+separately, $g(z)$ separates across nets completely
+\[
+g(z) = \sum_{{N_i} \in \nets} \mathcal{I}_{\{z_{N_i} \mid \bar z_{N_i} = 0\}} (z_{N_i}).
+\]
+
+\subsection{ADMM and the prox-project message passing algorithm}
+We apply ADMM to solve the SC-OPF by
+first forming the (scaled) augmented Lagrangian,
+\[
+\mathcal{L}(P,z,u) = f(P) + g(z) + (\rho/2)\|P - z + u\|_2^2,
+\]
+where $u = (1/\rho)y$ is the scaled dual variable $y$ associated with
+the consensus constraint $p = z$. We obtained the augmented Lagrangian
+by completing the squares.
+
+ADMM is then
+\BEAS
+P^{(\nu+1)} & := & \argmin_{P} \left(f(P) + (\rho/2)\|P - z^{(\nu)} + u^{(\nu)}\|_2^2 \right)\\
+z^{(\nu+1)} & := & \argmin_{z} \left(g(z) + (\rho/2)\|P^{(\nu+1)} - z + u^{(\nu)}\|_2^2 \right)\\
+u^{(\nu+1)} & := & u^{(\nu)} + (P^{(\nu+1)} - z^{(\nu+1)}).
+\EEAS
+Note that the superscript is an iteration counter---not the contingency
+label.
+
+Because of our problem structure, we can further simplify ADMM. The
+$P$-updates separate across devices and
+\BEAS
+P_d^{(\nu+1)} & := & \argmin_{P_d} \left(f_d(P_d) + (\rho/2)\|P_d - z_d^{(\nu)} + u_d^{(\nu)} \|_2^2\right)
+\EEAS
+%for all $d \in \devices$. Furthermore, the $z$-updates separate across
+%nets and
+%\BEAS
+%z_{N_i}^{(\nu+1)}  :=  \argmin_{z_{N_i}} \left(\mathcal{I}_{\{z_{N_i} \mid \bar z_{N_i} = 0\}} (z_{N_i}) + (\rho/2)\|P_{N_i}^{(\nu+1)} - z_{N_i} + u_{N_i}^{(\nu)}\|_2^2\right)
+%\EEAS
+%for all ${N_i} \in \nets$. The $z_{N_i}$-update is just a Euclidean projection
+%on to the set $\bar z_{N_i} = 0$ and can be solved analytically, so
+%\BEAS
+%z_{N_i}^{(\nu+1)} & := & P_{N_i}^{(\nu+1)} + u_{N_i}^{(\nu)} - \bar P_{N_i}^{(\nu+1)} - \bar u_{N_i}^{(\nu)}.
+%\EEAS
+for all $d \in \devices$. Furthermore, the $z$-updates separate across
+nets and $z_{N_i}$-update is just a Euclidean projection
+on to the set $\bar z_{N_i} = 0$ and can be solved analytically, so
+\BEAS
+z_{N_i}^{(\nu+1)} & = & P_{N_i}^{(\nu+1)} + u_{N_i}^{(\nu)} - \bar P_{N_i}^{(\nu+1)} - \bar u_{N_i}^{(\nu)}.
+\EEAS
+Substituting this expression for $z_{N_i}$ in to the $u$-update---which also
+splits across nets---we obtain the \textbf{prox-project message passing
+algorithm}:
+\begin{enumerate}
+\item \emph{Proximal plan updates.}
+\BEAS
+P_d^{(\nu+1)} & := &  \mathbf{prox}_{f_d,\rho}(P_d^{(\nu)} -\bar{P}_d^{(\nu)} - u_d^{(\nu)}),
+\quad \forall d \in \devices.
+\EEAS
+\item \emph{Scaled price updates.}
+\BEAS
+u_{N_i}^{(\nu+1)} &:=& u_{N_i}^{(\nu)} + \bar P_{N_i}^{(\nu+1)}, \quad \forall {N_i} \in \nets,
+\EEAS
+\end{enumerate}
+where the proximal function for a function $g$ is given by
+\[
+\mathbf{prox}_{g,\rho}(v) = \argmin_x (g(x) + (\rho/2)\|x - v\|_2^2).
+\]
+This algorithm alternates between evaluating prox functions (in
+parallel) on each device and performing price updates on each net.
+This algorithm has the following three properties:
+
+\paragraph{Convergence.}
+Since our prox-project message passing algorithm is a (simplified)
+version of ADMM, the convergence results for ADMM also apply to
+prox-project message passing. In particular, with mild conditions on
+device objective functions $f_d$---namely, that they are closed, convex,
+and proper---and provided a feasible solution exists, the following
+properties of our algorithm hold.
+\begin{enumerate}
+\item \textit{Residual convergence.} $\bar P^{(\nu)} \to 0$ as $\nu \to \infty$,
+\item \textit{Objective convergence.} $\sum_{d \in \devices} f_d(P_d^{(\nu)}) + \sum_{{N_i} \in \nets} g_{N_i}(P_{N_i}^{(\nu)}) \to f^\star$ as $\nu \to \infty$,
+\item \textit{Dual variable convergence.} $\rho u^{(\nu)} = y^{(\nu)} \to y^\star$ as $\nu \to \infty$,
+\end{enumerate}
+where $f^\star$ is the optimal value for the (convex) SC-OPF, and
+$y^\star$ are the optimal dual variables (prices). A proof of these
+conditions can be found in \cite{BP:11}.
+
+Convergence of our algorithm guarantees that, if message passing is run
+long enough, power balance will be satisfied by $P^{(\nu)}$. Furthermore, this
+$P^{(\nu)}$ will minimize the total cost of operating the network and, as a
+byproduct, we also obtain variable contingency pricing.
+
+\paragraph{Distributed.} Note that while the scaled price updates were
+separated across nets, it could have also been separated across devices.
+As long as each device has the ability to access the average power
+imbalance for the nets it shares with its neighbors, this algorithm can
+be completely decentralized. The scaled price updates can happen
+locally, with each device retaining a copy of the (scaled) prices $u$.
+This means that net computation (scaled price update) can be virtualized
+and done on each device instead of on each net, as long as devices that
+share a net are able to compute their average power imbalance. Then, the
+algorithm consists of each device planning for each contingency and a
+broadcast of plans to its neighbors. 
+% The following observation follows from the fact that u_{n_1} = u_{n_2} = ... = u_{n_|n|}, but we did not establish that fact yet
+%Alternatively, a price exchange can be used as a parity check for the algorithm.
+
+\paragraph{Self-healing.} Because the semantics of a net is to enforce
+power balance, when a device connects or disconnects from a net (\ie,
+when the network topology changes), the algorithm can continue to
+function without modification.
+
+When the topology of the network changes, the current iterates $P^{(\nu)}$ and
+$u^{(\nu)}$ of our algorithm can be used as a \emph{warm start}. Assuming
+topology changes are not too frequent, the message passing algorithm
+will simply converge to the new fixed point.
+
+\subsection{Stopping criterion}We can define primal and dual residuals for the
+prox-project message passing algorithm:
+\[
+r^{(\nu)} = \bar P^{(\nu)},
+s^{(\nu)} = \rho\left((P^{(\nu)} - \bar P^{(\nu)}) - (P^{(\nu-1)} - \bar P^{(\nu-1)})\right).
+\]
+The
+interpretation of $P^{(\nu)}$ is as a power plan.
+
+A simple terminating criterion for prox-project message passing is when
+\[
+\| r^{(\nu)} \|_2 \leq \epsilon^\mathrm{pri}, \qquad \|s^{(\nu)}\|_2 \leq \epsilon^\mathrm{dual},
+\]
+where $\epsilon^\mathrm{pri}$ and $\epsilon^\mathrm{dual}$ are,
+respectively, primal and dual tolerances. We can normalize both of these
+quantities to the network size by the relation
+\[
+\epsilon^\mathrm{pri} = \epsilon^\mathrm{dual} = \epsilon^\mathrm{abs} \sqrt{|\terminals|(|\mathcal{L}|+1)},
+\]
+for some absolute tolerance $\epsilon^\mathrm{abs} > 0$.
+
+\subsection{Choice of $\rho$}
+The value of the algorithm parameter $\rho$ can greatly affect the
+convergence rate of the message passing algorithm. There are no known
+methods for choosing the optimal value of $\rho$ \emph{a priori}, except
+in certain special cases \cite{GT:12}.
+
+Empirically, however, it has been observed that the choice of $\rho$
+affects the convergence rate of the primal and dual residuals. If $\rho$
+is too large, the dual residuals converge slowly. If $\rho$ is too
+small, the primal residuals converge slowly. The optimal $\rho$ balances
+the convergence rate of both residuals. From this observation, several
+heuristics can be devised to modify $\rho$ at each iteration such that
+the primal and dual residuals remain approximately the same size.
+
+For more details on $\rho$ selection, consult \cite{BP:11,KC:13}.
+
+\subsection{Implementation of proximal functions}
+Each device is responsible for implementing its proximal function. In
+general, evaluating the proximal function requires solving an
+optimization problem. The complexity of solving this optimization
+problem depends on the structure of the local problem. In the case of
+SC-OPF, the variables are the local power plans $P_d$ and any other
+private variables. At most, the variables are coupled through the base
+case $P_d^{(0)}$. This results in an arrow structure in the KKT system
+of the local optimization problem. This kind of structure can be
+exploited and solved with linear complexity. If the power plans do not
+couple through the base case, then the local problem is completely
+separable across the contingencies.
+
+Because of this simple structure in the local SC-OPF problems on each
+device, we can quickly and efficiently evaluate the proximal functions
+for each device.

@@ -1,0 +1,16 @@
+
+Locational Marginal Prices for Real Power at nodes ($/MWh): 
+1	nan
+2	-nan
+3	inf
+4	-inf
+5	-inf
+6	-inf
+7	-inf
+8	inf
+9	inf
+10	-inf
+11	-inf
+12	-inf
+13	-inf
+14	inf

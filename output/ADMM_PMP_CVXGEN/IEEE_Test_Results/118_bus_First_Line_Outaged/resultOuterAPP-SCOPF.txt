@@ -1,0 +1,25 @@
+
+
+*** APMP ALGORITHM BASED LASCOPF FOR LOAD (DEMAND) VARIATION TRACKING SIMULATION (SERIAL IMPLEMENTATION) SUPERNETWORK LAYER BEGINS ***
+
+
+
+
+*** SIMULATION IN PROGRESS; PLEASE DON'T CLOSE ANY WINDOW OR OPEN ANY OUTPUT FILE YET ... ***
+
+
+
+
+Initial Value of the Tolerance to kick-start the APP outer iterations= 1000
+
+
+APP Itearion Count	APP Tolerance
+0	13.0664
+1	19.4125
+2	28.2095
+3	25.8457
+4	29.1564
+
+Execution Outermost layer time (s): 16840.4
+
+Virtual Outermost layer Execution time (s): 5480.87

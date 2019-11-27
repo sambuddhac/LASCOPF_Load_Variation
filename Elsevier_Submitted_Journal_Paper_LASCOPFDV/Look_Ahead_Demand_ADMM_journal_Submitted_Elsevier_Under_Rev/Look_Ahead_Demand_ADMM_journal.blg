@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Look_Ahead_Demand_ADMM_journal.aux
+The style file: elsarticle-num.bst
+Database file #1: msg_pass_sec.bib.bib
+You're missing a field name---line 3273 of file msg_pass_sec.bib.bib
+ :     year     = {2017}, 
+ :                        %other attributes omitted
+I'm skipping whatever remains of this entry
+You're missing a field name---line 3280 of file msg_pass_sec.bib.bib
+ :     year     = {2010}, 
+ :                        %other attributes omitted
+I'm skipping whatever remains of this entry
+Warning--empty journal in cain2012history
+Warning--empty booktitle in ADMMRamMadJav
+Warning--empty pages in Gab:83
+Warning--empty journal in WashIEEE
+Name 1 in "Jacob Mattingley, Yang Wang, and Stephen Boyd" has a comma at the end for entry cvxgen02
+while executing---line 1495 of file elsarticle-num.bst
+You've used 55 entries,
+            2937 wiz_defined-function locations,
+            1018 strings with 14324 characters,
+and the built_in function-call counts, 15646 in all, are:
+= -- 1485
+> -- 491
+< -- 6
++ -- 200
+- -- 145
+* -- 1073
+:= -- 2136
+add.period$ -- 68
+call.type$ -- 55
+change.case$ -- 53
+chr.to.int$ -- 0
+cite$ -- 59
+duplicate$ -- 478
+empty$ -- 1754
+format.name$ -- 189
+if$ -- 4092
+int.to.chr$ -- 0
+int.to.str$ -- 55
+missing$ -- 53
+newline$ -- 189
+num.names$ -- 57
+pop$ -- 331
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 1062
+stack$ -- 0
+substring$ -- 859
+swap$ -- 113
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 4
+while$ -- 106
+width$ -- 57
+write$ -- 469
+(There were 3 error messages)

@@ -1,0 +1,4 @@
+all:
+	g++ -std=c++0x -pthread -g node.cpp generator.cpp load.cpp loadcont.cpp transl.cpp tlinecont.cpp network.cpp mainserialLASCOPFLV.cpp gensolverFirst.cpp gensolverIntermediate.cpp gensolverLast.cpp -o exec
+clean:
+	rm -rf *o exec

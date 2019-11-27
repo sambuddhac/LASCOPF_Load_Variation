@@ -1,0 +1,47 @@
+# Produced by CVXGEN, 2016-05-03 19:32:22 -0400.
+# CVXGEN is Copyright (C) 2006-2012 Jacob Mattingley, jem@cvxgen.com.
+# The code in this file is Copyright (C) 2006-2012 Jacob Mattingley.
+# CVXGEN, or solvers produced by CVXGEN, cannot be used for commercial
+# applications without prior written permission from Jacob Mattingley.
+
+# Filename: description.cvxgen.
+# Description: A description of the CVXGEN problem.
+
+dimensions
+  m=11
+end
+
+parameters
+  rho positive # ADMM tuning parameter
+  beta positive # APP tuning parameter
+  gamma positive # APP tuning parameter
+  lambda_3; lambda_4 # APP Lagrange Multiplier corresponding to the complementary slackness
+  RgMax positive; RgMin negative # Generator maximum ramp up and ramp down limits
+  ones (m) # Vector of all ones and zeroes
+  PgMax positive; PgMin nonnegative # Generator Limits
+  c2 nonnegative; c1 nonnegative; c0 nonnegative # Generator cost coefficients, quadratic, liear and constant terms respectively
+  Pg_N_init (m) # Generator injection from last iteration for base case and contingencies
+  Pg_N_avg (m) # Net average power from last iteration for base case and contingencies
+  Thetag_N_avg (m) # Net average bus voltage angle from last iteration for base case and contingencies
+  ug_N (m) # Dual variable for net power balance for base case and contingencies
+  vg_N (m) #  Dual variable for net angle balance for base case and contingencies
+  Vg_N_avg (m) # Average of dual variable for net angle balance from last to last iteration for base case and contingencies
+  PgPrevNu; PgNu # Previous iterates of the corresponding decision variable values
+  A # Disagreement between the generator output values for the previous interval by the present and the previous interval, at the previous iteration
+  B # Cumulative disagreement between the generator output values for the previous and next intervals by the present, next, and the previous intervals, at the previous iteration
+  PgNext # Generator's belief about its output in the next interval, which is taken as the last iterate value of the present interval belief
+end
+
+variables
+  Pg # Generator real power output
+  PgPrev # Generator's belief about its output in the previous interval
+  Thetag (m) # Generator bus angle for base case and contingencies
+end
+
+minimize
+  c2*square(Pg)+c1*Pg+c0+(beta/2)*(square(PgPrev-PgPrevNu)+square(Pg-PgNu))+(gamma)*(PgPrev*A+Pg*B)-lambda_3*PgPrev-lambda_4*Pg+(rho/2)*(sum(square(Pg*ones-Pg_N_init+Pg_N_avg+ug_N)+square(Thetag-Vg_N_avg-Thetag_N_avg+vg_N)))
+subject to
+  PgMin <= Pg <= PgMax
+  RgMin <= PgNext-Pg <= RgMax
+  RgMin <= Pg-PgPrev <= RgMax
+end

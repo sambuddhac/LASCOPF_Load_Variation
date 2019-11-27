@@ -1,0 +1,4 @@
+
+****************** INTERNAL NODE VOLTAGE PHASE ANGLE VALUES *********************
+NODE ID	CONTINGENCY SCENARIO	VOLTAGE PHASE ANGLE
+Finished writing Internal Node Voltage Phase Angles

@@ -1,0 +1,20 @@
+
+
+Initial Value of the Tolerance to kick-start the APP outer iterations= 1000
+
+
+APP Iteration Count	APP Tolerance
+1	0.383329
+2	0.396753
+3	0.455128
+4	0.505203
+5	0.547968
+6	0.578031
+7	0.6086
+8	0.637924
+9	0.66443
+10	0.691169
+
+Execution time (s): 0.290926
+
+Virtual Supernetwork Execution time (s): 0.202631

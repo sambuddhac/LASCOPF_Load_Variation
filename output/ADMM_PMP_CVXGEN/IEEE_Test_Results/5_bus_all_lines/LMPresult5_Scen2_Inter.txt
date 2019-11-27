@@ -1,0 +1,7 @@
+
+Locational Marginal Prices for Real Power at nodes ($/MWh): 
+1	-32.6083
+2	-32.6064
+3	-32.6063
+4	-32.6047
+5	-32.6031

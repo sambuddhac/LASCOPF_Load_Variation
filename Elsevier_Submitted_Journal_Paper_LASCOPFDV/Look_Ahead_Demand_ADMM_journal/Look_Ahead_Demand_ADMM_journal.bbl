@@ -1,0 +1,243 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{KC:13}
+M.~Kraning, E.~Chu, J.~Lavaei, S.~Boyd, Dynamic network energy management via
+  proximal message passing, Foundations and Trends in Optimization 1~(2).
+
+\bibitem{CK:14}
+S.~Chakrabarti, M.~Kraning, E.~Chu, R.~Baldick, S.~Boyd, Security constrained
+  optimal power flow via proximal message passing, Proceedings of the 2014 IEEE
+  PES Clemson Power Systems Conference.
+
+\bibitem{BWW:08}
+K.~Bai, H.~Wei, Y.~Wang, Semidefinite programming for optimal power flow
+  problems, International Journal of Electric Power \& Energy Systems 30~(6-7)
+  (2008) 383--392.
+
+\bibitem{LL:12}
+J.~Lavaei, S.~Low, Zero duality gap in optimal power flow problem, IEEE
+  Transactions on Power Systems 27~(1) (2012) 92--107.
+
+\bibitem{SL:12a}
+S.~Sojoudi, J.~Lavaei, Physics of power networks makes hard problems easy to
+  solve, To appear, IEEE Power \& Energy Society General Meeting.
+
+\bibitem{SL:12b}
+S.~Sojoudi, J.~Lavaei, Network topologies guaranteeing zero duality gap for
+  optimal power flow problem, To appear, IEEE Power \& Energy Society General
+  Meeting.
+
+\bibitem{LTZ:12}
+J.~Lavaei, D.~Tse, B.~Zhang, Geometry of power flows in tree networks, To
+  appear, IEEE Power \& Energy Society General Meeting.
+
+\bibitem{E:14}
+T.~Erseghe, Distributed optimal power flow using admm, Power Systems, IEEE
+  Transactions on PP~(99) (2014) 1--11.
+\newblock \href {http://dx.doi.org/10.1109/TPWRS.2014.2306495}
+  {\path{doi:10.1109/TPWRS.2014.2306495}}.
+
+\bibitem{LKWZ:13}
+L.~Liu, A.~Khodaei, W.~Yin, Z.~Han, A distribute parallel approach for big data
+  scale optimal power flow with security constraints, in: Smart Grid
+  Communications (SmartGridComm), 2013 IEEE International Conference on, 2013,
+  pp. 774--778.
+\newblock \href {http://dx.doi.org/10.1109/SmartGridComm.2013.6688053}
+  {\path{doi:10.1109/SmartGridComm.2013.6688053}}.
+
+\bibitem{SamMo2018}
+S.~Chakrabarti, M.~R. Hesamzadeh, Financial transmission rights: A new
+  proposal, in: 2018 15th International Conference on the European Energy
+  Market (EEM), 2018, pp. 1--5.
+\newblock \href {http://dx.doi.org/10.1109/EEM.2018.8469941}
+  {\path{doi:10.1109/EEM.2018.8469941}}.
+
+\bibitem{QB:03}
+S.~J. Qin, T.~A. Badgwell, A survey of industrial model predictive control
+  technology, Control Engineering Practice 11~(7) (2003) 733--764.
+
+\bibitem{CTHK:03}
+E.~G. Cho, K.~A. Thoney, T.~J. Hodgson, R.~E. King, Supply chain planning:
+  Rolling horizon scheduling of multi-factory supply chains, in: Proceedings of
+  the 35th conference on Winter simulation: driving innovation, 2003, pp.
+  1409--1416.
+
+\bibitem{Her:05}
+F.~Herzog, Strategic portfolio management for long-term investments: {A}n
+  optimal control approach, Ph.D. thesis, ETH, Zurich (2005).
+
+\bibitem{TR:04}
+K.~T. Talluri, G.~J.~V. Ryzin, The Theory and Practice of Revenue Management,
+  Springer, 2004.
+
+\bibitem{KW:11}
+M.~Kraning, Y.~Wang, E.~Akuiyibo, S.~Boyd, Operation and configuration of a
+  storage portfolio via convex optimization, in: Proceedings of the 18th IFAC
+  World Congress, 2011, pp. 10487--10492.
+
+\bibitem{BP:11}
+S.~Boyd, N.~Parikh, E.~Chu, B.~Peleato, J.~Eckstein, Distributed optimization
+  and statistical learning via the alternating direction method of multipliers,
+  Foundations and Trends in Machine Learning 3 (2011) 1--122.
+
+\bibitem{Carp:62}
+J.~Carpentier, Contribution to the economic dispatch problem, Bull. Soc.
+  Francaise Elect. 3~(8) (1962) 431--447.
+
+\bibitem{Sambuddha2010}
+S.~Chakrabarti, Study of uplan based resources planning \& analysis by power
+  generation utilities in the deregulated electricity market, Master's thesis,
+  The University of Texas at Austin (2010).
+
+\bibitem{Happ:77}
+H.~H. Happ, Optimal power dispatch - a comprehensive survey, IEEE Transactions
+  on Power Apparatus and Systems 96~(3) (1977) 841--854.
+
+\bibitem{CR:90}
+B.~H. Chowdhury, S.~Rahman, A review of recent advances in economic dispatch,
+  IEEE Transactions on Power Systems 5~(4) (1990) 1248--1259.
+
+\bibitem{cain2012history}
+M.~B. Cain, R.~P. O’Neill, A.~Castillo, History of optimal power flow and
+  formulations.
+
+\bibitem{MHANNA201891}
+S.~Mhanna, A.~C. Chapman, G.~Verbič,
+  \href{http://www.sciencedirect.com/science/article/pii/S2352467718300389}{Component-based
+  dual decomposition methods for the opf problem}, Sustainable Energy, Grids
+  and Networks 16 (2018) 91 -- 110.
+\newblock \href {http://dx.doi.org/https://doi.org/10.1016/j.segan.2018.04.003}
+  {\path{doi:https://doi.org/10.1016/j.segan.2018.04.003}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S2352467718300389}
+
+\bibitem{SurvMol}
+D.~K. Molzahn, F.~Dörfler, H.~Sandberg, S.~H. Low, S.~Chakrabarti, R.~Baldick,
+  J.~Lavaei, A survey of distributed optimization and control algorithms for
+  electric power systems, IEEE Transactions on Smart Grid 8~(6) (2017)
+  2941--2962.
+\newblock \href {http://dx.doi.org/10.1109/TSG.2017.2720471}
+  {\path{doi:10.1109/TSG.2017.2720471}}.
+
+\bibitem{SurvKarg}
+A.~Kargarian, J.~Mohammadi, J.~Guo, S.~Chakrabarti, M.~Barati, G.~Hug, S.~Kar,
+  R.~Baldick, Toward distributed/decentralized dc optimal power flow
+  implementation in future electric power systems, IEEE Transactions on Smart
+  Grid 9~(4) (2018) 2574--2594.
+\newblock \href {http://dx.doi.org/10.1109/TSG.2016.2614904}
+  {\path{doi:10.1109/TSG.2016.2614904}}.
+
+\bibitem{1458198}
+B.~Stott, O.~Alsac, A.~Monticelli, Security analysis and optimization,
+  Proceedings of the IEEE 75~(12) (1987) 1623--1644.
+\newblock \href {http://dx.doi.org/10.1109/PROC.1987.13931}
+  {\path{doi:10.1109/PROC.1987.13931}}.
+
+\bibitem{CG:11}
+N.-Y. Chiang, A.~Grothey, Solving security constrained optimal power flow
+  problems by a structure exploiting interior point method, Tech. Rep.
+  Technical Report ERGO-11-014, School of Mathematics, The University of
+  Edinburgh (jun 2011).
+
+\bibitem{PK:12}
+D.~Phan, J.~Kalagnanam, Distributed methods for solving the
+  security-constrained optimal power flow problem, Proceedings of the 2012 IEEE
+  PES Innovative Smart Grid Technologies Conference.
+
+\bibitem{GlM:75}
+R.~Glowinski, A.~Marrocco, Sur l'approximation, par elements finis d'ordre un,
+  et la resolution, par penalisation-dualit\'e, d'une classe de problems de
+  {D}irichlet non lineares, Revue Fran\c{c}aise d'Automatique, Informatique, et
+  Recherche Op\'erationelle 9 (1975) 41--76.
+
+\bibitem{Gab:83}
+D.~Gabay, Applications of the method of multipliers to variational
+  inequalities, in: M.~Fortin, R.~Glowinski (Eds.), Augmented Lagrangian
+  Methods: Applications to the Solution of Boundary-Value Problems,
+  North-Holland: Amsterdam, 1983.
+
+\bibitem{FG:83}
+M.~Fortin, R.~Glowinski, Augmented Lagrangian Methods: Applications to the
+  Numerical Solution of Boundary-Value Problems, North-Holland: Amsterdam,
+  1983.
+
+\bibitem{EF:93}
+J.~Eckstein, M.~Fukushima, Some reformulations and applications of the
+  alternating direction method of multipliers, Large Scale Optimization: State
+  of the Art (1993) 119--138.
+
+\bibitem{Eck:94b}
+J.~Eckstein, Parallel alternating direction multiplier decomposition of convex
+  programs, Journal of Optimization Theory and Applications 80~(1) (1994)
+  39--62.
+
+\bibitem{KB:97}
+B.~H. Kim, R.~Baldick, Coarse-grained distributed optimal power flow, IEEE
+  Transactions on Power Systems 12~(2) (1997) 932--939.
+
+\bibitem{KB:00}
+B.~H. Kim, R.~Baldick, A comparison of distributed optimal power flow
+  algorithms, IEEE Transactions on Power Systems 15~(2) (2000) 599--604.
+
+\bibitem{Cohen:78}
+G.~Cohen, Optimization by decomposition and coordination: A unified approach,
+  Automatic Control, IEEE Transactions on 23~(2) (1978) 222--232.
+\newblock \href {http://dx.doi.org/10.1109/TAC.1978.1101718}
+  {\path{doi:10.1109/TAC.1978.1101718}}.
+
+\bibitem{Cohen:80}
+G.~Cohen, \href{http://dx.doi.org/10.1007/BF00934554}{Auxiliary problem
+  principle and decomposition of optimization problems}, Journal of
+  Optimization Theory and Applications 32~(3) (1980) 277--305.
+\newblock \href {http://dx.doi.org/10.1007/BF00934554}
+  {\path{doi:10.1007/BF00934554}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1007/BF00934554}
+
+\bibitem{BKCL:99}
+R.~Baldick, B.~Kim, C.~Chase, Y.~Lao, A fast distributed implementation of
+  optimal power flow, IEEE Transactions on Power Systems 31~(3).
+
+\bibitem{EbrBald:2000}
+R.~Ebrahimian, R.~Baldick, State estimation distributed processing [for power
+  systems], Power Systems, IEEE Transactions on 15~(4) (2000) 1240--1246.
+\newblock \href {http://dx.doi.org/10.1109/59.898096}
+  {\path{doi:10.1109/59.898096}}.
+
+\bibitem{BatRen:92}
+J.~Batut, A.~Renaud, Daily generation scheduling optimization with transmission
+  constraints: a new class of algorithms, Power Systems, IEEE Transactions on
+  7~(3) (1992) 982--989.
+\newblock \href {http://dx.doi.org/10.1109/59.207311}
+  {\path{doi:10.1109/59.207311}}.
+
+\bibitem{Sambuddha2017}
+S.~Chakrabarti, Post-contingency states representation \& redispatch for
+  restoration in power systems operation, Ph.D. thesis, The University of Texas
+  at Austin (2017).
+
+\bibitem{WashIEEE}
+U.~of~Washington, \href{https://labs.ece.uw.edu/pstca/}{Power systems test case
+  archive}.
+\newline\urlprefix\url{https://labs.ece.uw.edu/pstca/}
+
+\bibitem{cvxgen01}
+J.~Mattingley, S.~Boyd, Cvxgen: a code generator for embedded convex
+  optimization, Springer Optim. Eng.
+
+\bibitem{cvxgen02}
+Y.~W. Jacob~Mattingley, S.~Boyd, Code generation for receding horizon control,
+  Stanford University.
+
+\bibitem{cvxgen03}
+J.~Mattingley, S.~Boyd, Real time convex optimization in signal processing,
+  IEEE Signal Processing Magazine.
+
+\bibitem{cvxgen04}
+J.~Mattingley, S.~Boyd, Automatic code generation for real-time convex
+  optimization, Convex Optimization in Signal Processing and Communications.
+
+\end{thebibliography}
