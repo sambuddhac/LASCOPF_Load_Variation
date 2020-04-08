@@ -11,7 +11,7 @@
 #include "omp.h"
 using namespace std;
 #include "supernetwork.h" // Super Network class definition
-
+#define NUM_THREADS 4
 int main() // function main begins program execution
 {
 	int netID; // Network ID number to indicate the type of the system with specifying the number of buses/nodes
