@@ -124,12 +124,25 @@ int main() // function main begins program execution
 	do { // begin the outer AP iterations for attaining consensus among the MW values of different intervals
 	//for ( iterCountAPP = 1; iterCountAPP <= 10; ++iterCountAPP ) { // begin the outer AP iterations for attaining consensus among the MW values of different intervals
 		singleSuperNetTimeVec.clear(); // clear for upcoming iteration
-		for ( int netSimCount = 0; netSimCount < dispatchIntervals; ++netSimCount ) { // Solve the individual SCOPFs for different dispatch intervals
-			cout << "\nStart of " << iterCountAPP << " -th Outermost APP iteration for " << netSimCount+1 << " -th dispatch interval" << endl;
-			futureNetVector[netSimCount]->runSimulation(iterCountAPP, lambdaAPP, powDiff, powerSelfGen, powerNextBel, powerPrevBel, setInnerAPPTuning, environmentGUROBI); // start simulation
-			double singleSuperNetTime = futureNetVector[netSimCount]->getvirtualNetExecTime(); // get the computational time for each supernetwork under the assumption of nested and complete parallelism of each generator optimization, within each coarse grain optimization in the supernetworks
-			actualSuperNetTime += singleSuperNetTime; // Actual time
-			singleSuperNetTimeVec.push_back(singleSuperNetTime); // Vector of all independent supernet solve times
+		int nthreads;
+    	double time_start, time_finish;
+    	omp_set_num_threads(NUM_THREADS);
+    	time_start = omp_get_wtime();
+		#pragma omp parallel 
+		{
+        	int ID = omp_get_thread_num();
+        	int nthrds = omp_get_num_threads();
+        	if(ID==0) nthreads = nthrds;
+			for ( int netSimCount = ID; netSimCount < dispatchIntervals; netSimCount += nthrds) { // Solve the individual SCOPFs for different dispatch intervals
+				cout << "\nStart of " << iterCountAPP << " -th Outermost APP iteration for " << netSimCount+1 << " -th dispatch interval" << endl;
+				futureNetVector[netSimCount]->runSimulation(iterCountAPP, lambdaAPP, powDiff, powerSelfGen, powerNextBel, powerPrevBel, setInnerAPPTuning, environmentGUROBI); // start simulation
+				double singleSuperNetTime = futureNetVector[netSimCount]->getvirtualNetExecTime(); // get the computational time for each supernetwork under the assumption of nested and complete parallelism of each generator optimization, within each coarse grain optimization in the supernetworks
+				#pragma omp critical
+				{
+					actualSuperNetTime += singleSuperNetTime; // Actual time
+					singleSuperNetTimeVec.push_back(singleSuperNetTime); // Vector of all independent supernet solve times
+				}
+			}
 		}
 		double largestSuperNetTime = *max_element(singleSuperNetTimeVec.begin(), singleSuperNetTimeVec.end()); // get the laziest solve-time for this iteration
 		largestSuperNetTimeVec.push_back(largestSuperNetTime); // vector of all te laziest supernet calculations over all iterations
