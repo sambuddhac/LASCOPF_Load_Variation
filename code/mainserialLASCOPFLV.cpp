@@ -8,7 +8,7 @@
 #include <fstream>
 #include <cstring>
 #include "gurobi_c++.h"
-#include "omp.h"
+//#include "omp.h"
 using namespace std;
 #include "supernetwork.h" // Super Network class definition
 
