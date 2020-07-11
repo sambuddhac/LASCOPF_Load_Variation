@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++0x -fopenmp -g
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/samie/opt/gurobi801/linux64/include 
+CXX_INCLUDES = -I/home/samie/opt/gurobi900/linux64/include 
 

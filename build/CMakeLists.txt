@@ -24,7 +24,7 @@ endif()
 # Project's name
 INCLUDE_DIRECTORIES($ENV{GUROBI_HOME}/include)
 #INCLUDE_DIRECTORIES($ENV{GLPKDIR}/include)
-SET(GUR_LIB libgurobi80.so)
+SET(GUR_LIB libgurobi90.so)
 SET(GUR_LIBR libgurobi_c++.a)
 SET(GUR_LIBRA libgurobi_g++5.2.a)
 #SET(GLPK_LIB libglpk.so)
@@ -48,6 +48,6 @@ LASCOPFDV
 /home/samie/code/ADMM_Based_Proximal_Message_Passing_Distributed_OPF/LASCOPF_Load_Variation/code/load.cpp
 /home/samie/code/ADMM_Based_Proximal_Message_Passing_Distributed_OPF/LASCOPF_Load_Variation/code/gensolverCont.cpp
 )
-TARGET_LINK_LIBRARIES(LASCOPFDV /home/samie/opt/gurobi801/linux64/lib/${GUR_LIBR};/home/samie/opt/gurobi801/linux64/lib/${GUR_LIBRA};/home/samie/opt/gurobi801/linux64/lib/${GUR_LIB}   ${CMAKE_DL_LIBS})
-#TARGET_LINK_LIBRARIES(HorInvestCoord /home/samie/opt/gurobi801/linux64/lib/${GUR_LIBR}  ${CMAKE_DL_LIBS})
+TARGET_LINK_LIBRARIES(LASCOPFDV /home/samie/opt/gurobi900/linux64/lib/${GUR_LIBR};/home/samie/opt/gurobi900/linux64/lib/${GUR_LIBRA};/home/samie/opt/gurobi900/linux64/lib/${GUR_LIB}   ${CMAKE_DL_LIBS})
+#TARGET_LINK_LIBRARIES(HorInvestCoord /home/samie/opt/gurobi900/linux64/lib/${GUR_LIBR}  ${CMAKE_DL_LIBS})
 #TARGET_LINK_LIBRARIES(HorInvestCoord /usr/local/lib/${GLPK_LIB}  ${CMAKE_DL_LIBS})
